@@ -4,7 +4,7 @@ Este repositorio contiene todos los trabajos, ejercicios y proyectos solicitados
 **Alumno:** Antun, Lucas Santiago Said
 
 ## Contenido
-
+la
 Los materiales incluidos en este repositorio serán organizados según las indicaciones del profesor y podrán incluir:
 
 - Ejercicios prácticos
