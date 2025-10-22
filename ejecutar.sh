@@ -105,7 +105,7 @@ run_practico() {
     fi
     
     # Ejecutar
-    java -cp bin src.edu.informatica3.lucas_antun.$practico.$class
+    java -cp bin edu.informatica3.lucas_antun.$practico.$class
 }
 
 # Función especial para ejecutar el práctico integrador
