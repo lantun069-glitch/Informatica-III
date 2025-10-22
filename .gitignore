@@ -1,0 +1,27 @@
+# Archivos compilados temporales
+*.class
+!bin/**/*.class
+
+# Archivos de configuración del IDE
+.vscode/
+.idea/
+*.iml
+
+# Archivos temporales del sistema
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Logs y errores de Java
+hs_err_pid*.log
+*.log
+
+# Archivos de backup
+*.bak
+*.backup
+*~
+
+# Directorios temporales
+temp/
+tmp/
