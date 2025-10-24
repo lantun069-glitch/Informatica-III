@@ -68,6 +68,6 @@ public class Tarea {
     
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(descripcion, estado);
+        return java.util.Objects.hash(descripcion, estado);//Convierte los parámetros en un array y calcula un hash numérico consistente
     }
 }
