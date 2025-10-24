@@ -345,13 +345,13 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 **Lucas Santiago Said Antun**
 - 🎓 Estudiante de Informática III
-- 🏫 Universidad Nacional de Córdoba
-- 📧 [Contacto disponible bajo solicitud]
+- 🏫 Instituto Universitario Aeronáutico
+- 📧 lantun069@alumnos.iua.edu.ar
 
 **Federico Fernández**
 - 🎓 Estudiante de Informática III  
-- 🏫 Universidad Nacional de Córdoba
-- 📧 [Contacto disponible bajo solicitud]
+- 🏫 Instituto Universitario Aeronáutico
+- 📧 ffernandez576@alumnos.iua.edu.ar
 
 ---
 
