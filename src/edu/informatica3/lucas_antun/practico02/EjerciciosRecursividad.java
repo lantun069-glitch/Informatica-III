@@ -1,4 +1,4 @@
-package src.edu.informatica3.lucas_antun.practico02;
+package edu.informatica3.lucas_antun.practico02;
 
 public class EjerciciosRecursividad {
 
