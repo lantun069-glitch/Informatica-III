@@ -1,4 +1,4 @@
-package src.edu.informatica3.lucas_antun.practico01;
+package edu.informatica3.lucas_antun.practico01;
 
 /**
  * Representa una tarea en el sistema.
