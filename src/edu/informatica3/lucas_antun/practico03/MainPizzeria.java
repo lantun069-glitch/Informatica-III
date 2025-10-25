@@ -1,4 +1,4 @@
-package src.edu.informatica3.lucas_antun.practico03;
+package edu.informatica3.lucas_antun.practico03;
 
 import java.util.Scanner;
 import java.util.List;
