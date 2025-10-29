@@ -1,390 +1,337 @@
 package edu.informatica3.lucas_antun.practico04;
 
-/**
- * Demostracion de estructuras de datos (Pilas y Colas).
- */
 public class DemostracionEstructuras {
-    
-    /**
-     * Metodo principal que ejecuta todas las demostraciones.
-     * 
-     * @param args argumentos de linea de comandos (no utilizados)
-     */
-    public static void main(String[] args) {
-        System.out.println("ESTRUCTURAS DE DATOS - PILAS Y COLAS");
-        demostrarPila();
-        demostrarAplicacionesPila();
-        System.out.println("DEMOSTRACIONES COMPLETADAS");
-    }
-    
-    /**
-     * Demuestra las operaciones basicas de la Pila.
-     */
-    private static void demostrarPila() {
-        System.out.println("\nDEMOSTRACION DE PILA CON ARREGLO");
-        
-        // Crear una pila de enteros con capacidad 5
-        PilaArreglo<Integer> pila = new PilaArreglo<>(5);
-        
-        System.out.println("Pila creada con capacidad 5:");
-        System.out.println(pila);
-        System.out.printf("Esta vacia? %s%n", pila.isEmpty() ? "Si" : "No");
-        System.out.printf("Esta llena? %s%n", pila.isFull() ? "Si" : "No");
-        
-        // Agregar elementos
-        System.out.println("\nAgregando elementos 10, 20, 30, 40:");
-        try {
-            pila.push(10);
-            System.out.println("Push 10: " + pila);
-            
-            pila.push(20);
-            System.out.println("Push 20: " + pila);
-            
-            pila.push(30);
-            System.out.println("Push 30: " + pila);
-            
-            pila.push(40);
-            System.out.println("Push 40: " + pila);
-            
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+
+    // ==========================
+    // Ejercicio 1 – Pila con Arreglo
+    // ==========================
+    static class PilaArreglo {
+        private int[] datos;
+        private int tope;
+
+        public PilaArreglo(int capacidad) {
+            datos = new int[capacidad];
+            tope = -1;
         }
-        
-        // Verificar tope
-        System.out.printf("\nElemento en el tope: %d%n", pila.top());
-        System.out.printf("Tamano actual: %d%n", pila.size());
-        
-        // Desapilar elementos
-        System.out.println("\nDesapilando dos elementos:");
-        try {
-            System.out.printf("Pop: %d → %s%n", pila.pop(), pila);
-            System.out.printf("Pop: %d → %s%n", pila.pop(), pila);
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+
+        public boolean isEmpty() {
+            return tope == -1;
         }
-        
-        // Busqueda
-        System.out.println("\nBuscando elementos:");
-        System.out.printf("Posicion del 20 desde el tope: %d%n", pila.search(20));
-        System.out.printf("Posicion del 10 desde el tope: %d%n", pila.search(10));
-        System.out.printf("Posicion del 99 (no existe): %d%n", pila.search(99));
-        
-        // Llenar la pila
-        System.out.println("\nLlenando la pila hasta el limite:");
-        try {
-            pila.push(50);
-            System.out.println("Push 50: " + pila);
-            pila.push(60);
-            System.out.println("Push 60: " + pila);
-            pila.push(70);
-            System.out.println("Push 70: " + pila);
-            
-            // Intentar agregar uno mas (deberia fallar)
-            pila.push(80);
-            
-        } catch (IllegalStateException e) {
-            System.out.println("Error esperado: " + e.getMessage());
+
+        public boolean isFull() {
+            return tope == datos.length - 1;
         }
-        
-        System.out.printf("Estado final - Esta llena? %s%n", pila.isFull() ? "Si" : "No");
-    }
-    
-    /**
-     * Demuestra aplicaciones practicas de las pilas.
-     */
-    private static void demostrarAplicacionesPila() {
-        System.out.println("\nAPLICACIONES PRACTICAS DE PILAS");
-        demostrarParentesisBalanceados();
-        demostrarConversionExpresiones();
-        demostrarEvaluacionPostfija();
-        demostrarHistorialNavegacion();
-    }
-    
-    /**
-     * Demuestra la verificacion de parentesis balanceados usando una pila.
-     */
-    private static void demostrarParentesisBalanceados() {
-        System.out.println("\n Aplicacion 1: Verificacion de Parentesis Balanceados");
-        System.out.println("-".repeat(55));
-        
-        String[] expresiones = {
-            "((()))",
-            "()()())",
-            "(()",
-            "(()())",
-            ")((",
-            ""
-        };
-        
-        for (String expr : expresiones) {
-            boolean balanceado = verificarParentesisBalanceados(expr);
-            System.out.printf("'%s' → %s%n", 
-                expr.isEmpty() ? "(vacio)" : expr, 
-                balanceado ? " Balanceado" : " No balanceado");
-        }
-    }
-    
-    /**
-     * Verifica si los parentesis en una expresion estan balanceados.
-     * 
-     * @param expresion la expresion a verificar
-     * @return true si estan balanceados, false en caso contrario
-     */
-    private static boolean verificarParentesisBalanceados(String expresion) {
-        if (expresion.isEmpty()) {
-            return true; // Cadena vacia esta balanceada
-        }
-        
-        PilaArreglo<Character> pila = new PilaArreglo<>(expresion.length());
-        
-        for (char c : expresion.toCharArray()) {
-            if (c == '(') {
-                try {
-                    pila.push(c);
-                } catch (IllegalStateException e) {
-                    return false; // Demasiados parentesis de apertura
-                }
-            } else if (c == ')') {
-                if (pila.isEmpty()) {
-                    return false; // Parentesis de cierre sin apertura
-                }
-                pila.pop();
+
+        public void push(int dato) {
+            if (isFull()) {
+                System.out.println("La pila está llena");
+                throw new IllegalStateException("Pila llena");
             }
+            datos[++tope] = dato;
         }
-        
-        return pila.isEmpty(); // Debe estar vacia para estar balanceado
-    }
-    
-    /**
-     * Demuestra la conversion de expresiones infijas a postfijas.
-     */
-    private static void demostrarConversionExpresiones() {
-        System.out.println("\n Aplicacion 2: Conversion Infija a Postfija");
-        System.out.println("-".repeat(45));
-        
-        String[] expresiones = {
-            "a+b",
-            "a+b*c",
-            "(a+b)*c",
-            "a*(b+c)",
-            "a+b*c+d"
-        };
-        
-        for (String expr : expresiones) {
-            String postfija = convertirInfijaAPostfija(expr);
-            System.out.printf("Infija: %-12s → Postfija: %s%n", expr, postfija);
-        }
-    }
-    
-    /**
-     * Convierte una expresion infija simple a postfija.
-     * Simplificado para operadores +, *, (, )
-     * 
-     * @param infija expresion en notacion infija
-     * @return expresion en notacion postfija
-     */
-    private static String convertirInfijaAPostfija(String infija) {
-        PilaArreglo<Character> pila = new PilaArreglo<>(infija.length());
-        StringBuilder resultado = new StringBuilder();
-        
-        for (char c : infija.toCharArray()) {
-            if (Character.isLetterOrDigit(c)) {
-                // Operando: agregar directamente al resultado
-                resultado.append(c);
-            } else if (c == '(') {
-                // Parentesis de apertura: push a la pila
-                pila.push(c);
-            } else if (c == ')') {
-                // Parentesis de cierre: pop hasta encontrar '('
-                while (!pila.isEmpty() && pila.top() != '(') {
-                    resultado.append(pila.pop());
-                }
-                if (!pila.isEmpty()) {
-                    pila.pop(); // Remover '('
-                }
-            } else if (esOperador(c)) {
-                // Operador: pop operadores de mayor o igual precedencia
-                while (!pila.isEmpty() && 
-                       precedencia(pila.top()) >= precedencia(c)) {
-                    resultado.append(pila.pop());
-                }
-                pila.push(c);
+
+        public int pop() {
+            if (isEmpty()) {
+                System.out.println("La pila está vacía");
+                throw new IllegalStateException("Pila vacía");
             }
+            return datos[tope--];
         }
-        
-        // Pop operadores restantes
-        while (!pila.isEmpty()) {
-            resultado.append(pila.pop());
-        }
-        
-        return resultado.toString();
-    }
-    
-    /**
-     * Verifica si un caracter es un operador.
-     */
-    private static boolean esOperador(char c) {
-        return c == '+' || c == '-' || c == '*' || c == '/';
-    }
-    
-    /**
-     * Retorna la precedencia de un operador.
-     */
-    private static int precedencia(char operador) {
-        return switch (operador) {
-            case '+', '-' -> 1;
-            case '*', '/' -> 2;
-            default -> -1;
-        };
-    }
-    
-    /**
-     * Demuestra la evaluacion de expresiones postfijas.
-     */
-    private static void demostrarEvaluacionPostfija() {
-        System.out.println("\n Aplicacion 3: Evaluacion de Expresiones Postfijas");
-        System.out.println("-".repeat(50));
-        
-        String[] expresiones = {
-            "23+",      // (2+3) = 5
-            "23*4+",    // (2*3)+4 = 10
-            "234*+",    // 2+(3*4) = 14
-            "15+26*+",  // (1+5)+(2*6) = 18
-        };
-        
-        for (String expr : expresiones) {
-            try {
-                int resultado = evaluarPostfija(expr);
-                System.out.printf("Postfija: %s → Resultado: %d%n", expr, resultado);
-            } catch (Exception e) {
-                System.out.printf("Postfija: %s → Error: %s%n", expr, e.getMessage());
+
+        public int top() {
+            if (isEmpty()) {
+                System.out.println("La pila está vacía");
+                throw new IllegalStateException("Pila vacía");
             }
+            return datos[tope];
+        }
+
+        public void mostrar() {
+            System.out.print("[ ");
+            for (int i = 0; i <= tope; i++) {
+                System.out.print(datos[i] + " ");
+            }
+            System.out.println("]");
         }
     }
-    
+
+    // ==========================
+    // Ejercicio 2 – Cola con Arreglo
+    // ==========================
     /**
-     * Evalua una expresion postfija simple.
-     * 
-     * @param postfija expresion postfija con digitos unicos
-     * @return resultado de la evaluacion
+     * Cola circular para enteros con comportamiento de sobrescritura.
+     *
+     * Comportamiento:
+     * - Tiene una capacidad fija (tamaño del arreglo).
+     * - `enqueue` inserta siempre en la posición `fin` siguiente.
+     * - Si la cola está llena, `enqueue` sobrescribe la entrada más antigua
+     *   (avanzando `frente`) en lugar de lanzar una excepción.
+     * - Cuando se sobrescribe, se registra un mensaje indicando qué
+     *   elemento fue descartado y cuál lo reemplaza (útil en demos).
+     *
+     * Este comportamiento simula una cola circular en sistemas donde las
+     * llamadas/entradas más recientes deben conservarse y las más antiguas
+     * pueden descartarse automáticamente.
      */
-    private static int evaluarPostfija(String postfija) {
-        PilaArreglo<Integer> pila = new PilaArreglo<>(postfija.length());
-        
-        for (char c : postfija.toCharArray()) {
-            if (Character.isDigit(c)) {
-                // Operando: push a la pila
-                pila.push(Character.getNumericValue(c));
-            } else if (esOperador(c)) {
-                // Operador: pop dos operandos, operar y push resultado
-                if (pila.size() < 2) {
-                    throw new IllegalArgumentException("Expresion invalida: faltan operandos");
-                }
-                
-                int operando2 = pila.pop();
-                int operando1 = pila.pop();
-                int resultado = switch (c) {
-                    case '+' -> operando1 + operando2;
-                    case '-' -> operando1 - operando2;
-                    case '*' -> operando1 * operando2;
-                    case '/' -> {
-                        if (operando2 == 0) {
-                            throw new ArithmeticException("Division por cero");
-                        }
-                        yield operando1 / operando2;
-                    }
-                    default -> throw new IllegalArgumentException("Operador desconocido: " + c);
-                };
-                
-                pila.push(resultado);
-            }
+    static class ColaArreglo {
+        private int[] datos;
+        private int frente, fin, cantidad;
+
+        public ColaArreglo(int capacidad) {
+            datos = new int[capacidad];
+            frente = 0;
+            fin = -1;
+            cantidad = 0;
         }
-        
-        if (pila.size() != 1) {
-            throw new IllegalArgumentException("Expresion invalida: resultado ambiguo");
+
+        public boolean isEmpty() {
+            return cantidad == 0;
         }
-        
-        return pila.pop();
-    }
-    
-    /**
-     * Demuestra un historial de navegacion usando una pila.
-     */
-    private static void demostrarHistorialNavegacion() {
-        System.out.println("\n Aplicacion 4: Historial de Navegacion Web");
-        System.out.println("-".repeat(42));
-        
-        HistorialNavegacion historial = new HistorialNavegacion(10);
-        
-        // Simular navegacion
-        System.out.println("Navegando por diferentes paginas:");
-        historial.visitarPagina("google.com");
-        historial.visitarPagina("youtube.com");
-        historial.visitarPagina("github.com");
-        historial.visitarPagina("stackoverflow.com");
-        
-        System.out.println("\nHistorial actual:");
-        historial.mostrarHistorial();
-        
-        System.out.println("\nRetrocediendo 2 paginas:");
-        historial.retroceder();
-        historial.retroceder();
-        
-        System.out.println("\nHistorial despues de retroceder:");
-        historial.mostrarHistorial();
-        
-        System.out.println("\nVisitando nueva pagina:");
-        historial.visitarPagina("reddit.com");
-        historial.mostrarHistorial();
-    }
-    
-    /**
-     * Clase auxiliar para demostrar historial de navegacion con pila.
-     */
-    private static class HistorialNavegacion {
-        private final PilaArreglo<String> historial;
-        private String paginaActual;
-        
-        public HistorialNavegacion(int capacidad) {
-            this.historial = new PilaArreglo<>(capacidad);
-            this.paginaActual = null;
+
+        public boolean isFull() {
+            return cantidad == datos.length;
         }
-        
-        public void visitarPagina(String url) {
-            if (paginaActual != null) {
-                try {
-                    historial.push(paginaActual);
-                } catch (IllegalStateException e) {
-                    // Si el historial esta lleno, remover la pagina mas antigua
-                    // En una implementacion real, usariamos una estructura diferente
-                    System.out.println("Historial lleno, pagina mas antigua eliminada");
-                }
-            }
-            paginaActual = url;
-            System.out.printf(" Visitando: %s%n", url);
-        }
-        
-        public String retroceder() {
-            if (historial.isEmpty()) {
-                System.out.println(" No hay paginas anteriores");
-                return paginaActual;
-            }
-            
-            String paginaAnterior = historial.pop();
-            System.out.printf(" Retrocediendo a: %s%n", paginaAnterior);
-            paginaActual = paginaAnterior;
-            return paginaActual;
-        }
-        
-        public void mostrarHistorial() {
-            System.out.printf(" Pagina actual: %s%n", 
-                paginaActual != null ? paginaActual : "Ninguna");
-            
-            if (!historial.isEmpty()) {
-                System.out.println(" Historial: " + historial);
+
+        public void enqueue(int dato) {
+            // Avanzamos la posición de fin donde se insertará el nuevo elemento
+            fin = (fin + 1) % datos.length;
+            if (isFull()) {
+                // Si la cola está llena, sobrescribimos la llamada más antigua.
+                // Guardamos el valor que será descartado para el log.
+                int sobrescrito = datos[frente];
+                // Avanzamos 'frente' descartando el elemento antiguo.
+                frente = (frente + 1) % datos.length;
+                datos[fin] = dato;
+                // 'cantidad' permanece igual (capacidad máxima)
+                System.out.printf("Sobrescribiendo llamada %d por %d%n", sobrescrito, dato);
             } else {
-                System.out.println(" Historial: vacio");
+                datos[fin] = dato;
+                cantidad++;
             }
         }
+
+        public int dequeue() {
+            if (isEmpty()) {
+                System.out.println("La cola está vacía");
+                throw new IllegalStateException("Cola vacía");
+            }
+            int valor = datos[frente];
+            frente = (frente + 1) % datos.length;
+            cantidad--;
+            return valor;
+        }
+
+        public int top() {
+            if (isEmpty()) {
+                System.out.println("La cola está vacía");
+                throw new IllegalStateException("Cola vacía");
+            }
+            return datos[frente];
+        }
+
+        public void mostrar() {
+            System.out.print("[ ");
+            for (int i = 0; i < cantidad; i++) {
+                if (i > 0) System.out.print(", ");
+                System.out.print(datos[(frente + i) % datos.length]);
+            }
+            System.out.println(" ]");
+        }
+    }
+
+    /**
+     * Variante de cola que almacena Strings (para demostraciones con nombres).
+     */
+    static class ColaArregloString {
+        private String[] datos;
+        private int frente, fin, cantidad;
+
+        public ColaArregloString(int capacidad) {
+            datos = new String[capacidad];
+            frente = 0;
+            fin = -1;
+            cantidad = 0;
+        }
+
+        public boolean isEmpty() { return cantidad == 0; }
+        public boolean isFull() { return cantidad == datos.length; }
+
+        public void enqueue(String dato) {
+            if (isFull()) {
+                System.out.println("La cola está llena");
+                throw new IllegalStateException("Cola llena");
+            }
+            fin = (fin + 1) % datos.length;
+            datos[fin] = dato;
+            cantidad++;
+        }
+
+        public String dequeue() {
+            if (isEmpty()) {
+                System.out.println("La cola está vacía");
+                throw new IllegalStateException("Cola vacía");
+            }
+            String valor = datos[frente];
+            frente = (frente + 1) % datos.length;
+            cantidad--;
+            return valor;
+        }
+
+        public String top() {
+            if (isEmpty()) {
+                System.out.println("La cola está vacía");
+                throw new IllegalStateException("Cola vacía");
+            }
+            return datos[frente];
+        }
+
+        public void mostrar() {
+            System.out.print("[ ");
+            for (int i = 0; i < cantidad; i++) {
+                if (i > 0) System.out.print(", ");
+                System.out.print(datos[(frente + i) % datos.length]);
+            }
+            System.out.println(" ]");
+        }
+    }
+
+    // ==========================
+    // MAIN – Demostraciones
+    // ==========================
+    public static void main(String[] args) {
+
+        System.out.println("=== PRACTICO 4 – PILAS Y COLAS ===\n");
+
+        // ===== Ejercicio 1 =====
+        System.out.println("1. Pila con arreglo:");
+        PilaArreglo pila = new PilaArreglo(5);
+        pila.push(10);
+        pila.push(20);
+        pila.push(30);
+        pila.push(40);
+        System.out.print("Pila actual: ");
+        pila.mostrar();
+        pila.pop();
+        pila.pop();
+        System.out.print("Pila después de desapilar 2: ");
+        pila.mostrar();
+        System.out.println();
+
+        // ===== Ejercicio 2 =====
+        System.out.println("2. Cola con arreglo:");
+        ColaArreglo cola = new ColaArreglo(5);
+        cola.enqueue(1);
+        cola.enqueue(2);
+        cola.enqueue(3);
+        cola.enqueue(4);
+        System.out.print("Cola actual: ");
+        cola.mostrar();
+        cola.dequeue();
+        System.out.print("Cola después de desencolar 1: ");
+        cola.mostrar();
+        System.out.println();
+
+        // ===== Ejercicio 3 =====
+        System.out.println("3. Invertir cadena con pila:");
+        String texto = "Hola";
+        PilaArreglo pilaCadena = new PilaArreglo(texto.length());
+        for (char c : texto.toCharArray()) pilaCadena.push(c);
+        String invertida = "";
+        while (!pilaCadena.isEmpty()) invertida += (char) pilaCadena.pop();
+        System.out.println("Original: " + texto);
+        System.out.println("Invertida: " + invertida);
+        System.out.println();
+
+    // ===== Ejercicio 4 =====
+    System.out.println("4. Simulación de turnos con cola:");
+    ColaArregloString clientes = new ColaArregloString(10);
+    clientes.enqueue("Ana");
+    clientes.enqueue("Luis");
+    clientes.enqueue("Marta");
+    clientes.enqueue("Pedro");
+    System.out.print("Cola antes de atender: ");
+    clientes.mostrar();
+    clientes.dequeue(); // Ana atendida
+    clientes.dequeue(); // Luis atendido
+    System.out.print("Cola después de atender: ");
+    clientes.mostrar();
+    System.out.println();
+
+        // ===== Ejercicio 5 =====
+        System.out.println("5. Palíndromo con pila y cola:");
+        String palabra = "radar";
+        PilaArreglo p = new PilaArreglo(palabra.length());
+        ColaArreglo c = new ColaArreglo(palabra.length());
+        for (char ch : palabra.toCharArray()) {
+            p.push(ch);
+            c.enqueue(ch);
+        }
+        boolean palindromo = true;
+        while (!p.isEmpty() && !c.isEmpty()) {
+            if (p.pop() != c.dequeue()) {
+                palindromo = false;
+                break;
+            }
+        }
+        System.out.println("¿'" + palabra + "' es palíndromo? " + palindromo);
+        System.out.println();
+
+        // ===== Ejercicio 6 =====
+        System.out.println("6. Deshacer / Rehacer con pilas:");
+        PilaArreglo deshacer = new PilaArreglo(10);
+        PilaArreglo rehacer = new PilaArreglo(10);
+
+        deshacer.push('A');
+        deshacer.push('B');
+        deshacer.push('C');
+        deshacer.push('D');
+        deshacer.push('E');
+        System.out.print("Pila de deshacer: ");
+        deshacer.mostrar();
+
+        System.out.println("Deshacer 2 acciones...");
+        rehacer.push(deshacer.pop());
+        rehacer.push(deshacer.pop());
+        System.out.print("Pila deshacer: ");
+        deshacer.mostrar();
+        System.out.print("Pila rehacer: ");
+        rehacer.mostrar();
+
+        System.out.println("Rehacer 1 acción...");
+        deshacer.push(rehacer.pop());
+        System.out.print("Pila deshacer: ");
+        deshacer.mostrar();
+        System.out.print("Pila rehacer: ");
+        rehacer.mostrar();
+        System.out.println();
+
+    // ===== Ejercicio 7 =====
+    System.out.println("7. Simulación de impresora con cola:");
+    ColaArregloString impresora = new ColaArregloString(10);
+    // Encolar 5 documentos con nombres Doc1..Doc5
+    for (int i = 1; i <= 5; i++) impresora.enqueue("Doc" + i);
+    System.out.print("Cola de impresión: ");
+    impresora.mostrar();
+    System.out.println("Imprimiendo 3 documentos...");
+    // Simular impresión de 3 documentos (desencolar 3)
+    for (int i = 0; i < 3; i++) impresora.dequeue();
+    System.out.print("Cola después de imprimir: ");
+    impresora.mostrar();
+    System.out.println();
+
+        // ===== Ejercicio 8 =====
+        System.out.println("8. Cola circular para llamadas:");
+        ColaArreglo llamadas = new ColaArreglo(5);
+        for (int i = 1; i <= 8; i++) {
+            // Simulación: llegan 8 llamadas a una cola con capacidad 5.
+            // Llamamos a `enqueue(i)` directamente para demostrar que la
+            // cola maneja la sobrescritura internamente (si está llena)
+            // y registra qué llamada antigua fue reemplazada por la nueva.
+            llamadas.enqueue(i);
+        }
+        System.out.print("Cola final (últimas 5 llamadas): ");
+        llamadas.mostrar();
+
+        System.out.println("\n=== FIN DEL PRACTICO ===");
     }
 }
