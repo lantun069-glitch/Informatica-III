@@ -101,7 +101,7 @@ public class MainPizzeria {
     }
     
     private void agregarPedido() {
-        System.out.println("\\n AGREGAR NUEVO PEDIDO");
+        System.out.println("\n AGREGAR NUEVO PEDIDO");
         System.out.println("─".repeat(25));
         
         try {
@@ -128,15 +128,15 @@ public class MainPizzeria {
     
     private void eliminarPedido() {
         if (pizzeria.estaVacio()) {
-            System.out.println("\\n No hay pedidos para eliminar");
+            System.out.println("\n No hay pedidos para eliminar");
             return;
         }
         
-        System.out.println("\\n ELIMINAR PEDIDO");
+        System.out.println("\n ELIMINAR PEDIDO");
         System.out.println("─".repeat(18));
         
         pizzeria.mostrarPedidos();
-        System.out.print("\\n Ingrese el ID del pedido a eliminar: ");
+        System.out.print("\n Ingrese el ID del pedido a eliminar: ");
         
         try {
             int id = Integer.parseInt(scanner.nextLine().trim());
@@ -148,17 +148,17 @@ public class MainPizzeria {
     
     private void actualizarPedido() {
         if (pizzeria.estaVacio()) {
-            System.out.println("\\n No hay pedidos para actualizar");
+            System.out.println("\n No hay pedidos para actualizar");
             return;
         }
         
-        System.out.println("\\n ACTUALIZAR PEDIDO");
+        System.out.println("\n ACTUALIZAR PEDIDO");
         System.out.println("─".repeat(20));
         
         pizzeria.mostrarPedidos();
         
         try {
-            System.out.print("\\n ID del pedido a actualizar: ");
+            System.out.print("\n ID del pedido a actualizar: ");
             int id = Integer.parseInt(scanner.nextLine().trim());
             
             System.out.print(" Nuevo precio: $");
@@ -176,24 +176,24 @@ public class MainPizzeria {
     
     private void cambiarEstadoPedido() {
         if (pizzeria.estaVacio()) {
-            System.out.println("\\n No hay pedidos para cambiar estado");
+            System.out.println("\n No hay pedidos para cambiar estado");
             return;
         }
         
-        System.out.println("\\n CAMBIAR ESTADO DE PEDIDO");
+        System.out.println("\n CAMBIAR ESTADO DE PEDIDO");
         System.out.println("─".repeat(30));
         
         pizzeria.mostrarPedidos();
         
         try {
-            System.out.print("\\n ID del pedido: ");
+            System.out.print("\n ID del pedido: ");
             int id = Integer.parseInt(scanner.nextLine().trim());
             
-            System.out.println("\\n Estados disponibles:");
+            System.out.println("\n Estados disponibles:");
             System.out.println("1. Pendiente");
             System.out.println("2. En preparacion");
             System.out.println("3. Completado");
-            System.out.print("\\n Seleccione el nuevo estado: ");
+            System.out.print("\n Seleccione el nuevo estado: ");
             
             int opcionEstado = Integer.parseInt(scanner.nextLine().trim());
             
@@ -216,13 +216,13 @@ public class MainPizzeria {
     }
     
     private void menuBusquedas() {
-        System.out.println("\\n MENU DE BUSQUEDAS");
+        System.out.println("\n MENU DE BUSQUEDAS");
         System.out.println("─".repeat(22));
         System.out.println("1. Buscar por cliente");
         System.out.println("2. Buscar por estado");
         System.out.println("3. Buscar por rango de precio");
         System.out.println("4. Mostrar pedido especifico");
-        System.out.print("\\n Seleccione tipo de busqueda: ");
+        System.out.print("\n Seleccione tipo de busqueda: ");
         
         int opcion = leerOpcion();
         
@@ -244,11 +244,11 @@ public class MainPizzeria {
     }
     
     private void buscarPorEstado() {
-        System.out.println("\\n Estados disponibles:");
+        System.out.println("\n Estados disponibles:");
         System.out.println("1. Pendiente");
         System.out.println("2. En preparacion");
         System.out.println("3. Completado");
-        System.out.print("\\n Seleccione estado: ");
+        System.out.print("\n Seleccione estado: ");
         
         int opcion = leerOpcion();
         Pedido.EstadoPedido estado = switch (opcion) {
@@ -268,7 +268,7 @@ public class MainPizzeria {
     
     private void buscarPorRangoPrecio() {
         try {
-            System.out.print("\\n Precio minimo: $");
+            System.out.print("\n Precio minimo: $");
             double min = Double.parseDouble(scanner.nextLine().trim());
             
             System.out.print(" Precio maximo: $");
@@ -284,7 +284,7 @@ public class MainPizzeria {
     
     private void mostrarPedidoEspecifico() {
         try {
-            System.out.print("\\n ID del pedido: ");
+            System.out.print("\n ID del pedido: ");
             int id = Integer.parseInt(scanner.nextLine().trim());
             pizzeria.mostrarPedidoDetallado(id);
         } catch (NumberFormatException e) {
@@ -293,7 +293,7 @@ public class MainPizzeria {
     }
     
     private void mostrarResultadosBusqueda(List<Pedido> resultados, String criterio) {
-        System.out.printf("\\n Resultados de busqueda por %s:%n", criterio);
+        System.out.printf("\n Resultados de busqueda por %s:%n", criterio);
         
         if (resultados.isEmpty()) {
             System.out.println(" No se encontraron pedidos que coincidan con el criterio");
@@ -302,24 +302,24 @@ public class MainPizzeria {
             for (int i = 0; i < resultados.size(); i++) {
                 System.out.printf("%d. %s%n", i + 1, resultados.get(i));
             }
-            System.out.printf("\\n Se encontraron %d pedido(s)%n", resultados.size());
+            System.out.printf("\n Se encontraron %d pedido(s)%n", resultados.size());
         }
     }
     
     private void menuOrdenamiento() {
         if (pizzeria.estaVacio()) {
-            System.out.println("\\n No hay pedidos para ordenar");
+            System.out.println("\n No hay pedidos para ordenar");
             return;
         }
         
-        System.out.println("\\n MENU DE ORDENAMIENTO");
+        System.out.println("\n MENU DE ORDENAMIENTO");
         System.out.println("─".repeat(25));
         System.out.println("1. Ordenar por tiempo (Insertion Sort)");
         System.out.println("2. Ordenar por precio (Shell Sort)");
         System.out.println("3. Ordenar por nombre (Quick Sort)");
         System.out.println("4. Ordenar por estado y tiempo");
         System.out.println("5. Ordenar por precio descendente y tiempo");
-        System.out.print("\\n Seleccione algoritmo: ");
+        System.out.print("\n Seleccione algoritmo: ");
         
         int opcion = leerOpcion();
         
@@ -356,7 +356,7 @@ public class MainPizzeria {
     }
     
     private void menuAnalisisRendimiento() {
-        System.out.println("\\n ANALISIS DE RENDIMIENTO");
+        System.out.println("\n ANALISIS DE RENDIMIENTO");
         System.out.println("─".repeat(30));
         System.out.println("1. Comparar con 100 pedidos");
         System.out.println("2. Comparar con 1,000 pedidos");
@@ -377,7 +377,7 @@ public class MainPizzeria {
     
     private void analisisPersonalizado() {
         try {
-            System.out.print("\\n Numero de pedidos para el analisis: ");
+            System.out.print("\n Numero de pedidos para el analisis: ");
             int cantidad = Integer.parseInt(scanner.nextLine().trim());
             
             if (cantidad <= 0) {
@@ -394,14 +394,14 @@ public class MainPizzeria {
     
     private void confirmarLimpiezaTotal() {
         if (pizzeria.estaVacio()) {
-            System.out.println("\\n No hay pedidos para limpiar");
+            System.out.println("\n No hay pedidos para limpiar");
             return;
         }
         
-        System.out.println("\\n CONFIRMACION DE LIMPIEZA");
+        System.out.println("\n CONFIRMACION DE LIMPIEZA");
         System.out.println("─".repeat(30));
         System.out.printf("Esta a punto de eliminar %d pedido(s).%n", pizzeria.obtenerTotalPedidos());
-        System.out.print("\\nEsta seguro? (S/N): ");
+        System.out.print("\nEsta seguro? (S/N): ");
         
         String respuesta = scanner.nextLine().trim().toUpperCase();
         
@@ -415,7 +415,7 @@ public class MainPizzeria {
     // despedirse eliminado
     
     private void esperarEnter() {
-        System.out.println("\\n Presione Enter para continuar...");
+        System.out.println("\n Presione Enter para continuar...");
         scanner.nextLine();
         limpiarPantalla();
     }
