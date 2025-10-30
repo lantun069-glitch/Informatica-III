@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-green.svg)]()
 
-**Universidad:** Universidad Nacional de Córdoba  
+**Universidad:** Instituto Universitario Aeronáutico  
 **Materia:** Informática III  
 **Estudiantes:** Lucas Santiago Said Antun & Federico Fernández  
 **Año:** 2025
