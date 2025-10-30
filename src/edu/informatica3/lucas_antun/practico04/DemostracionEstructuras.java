@@ -96,8 +96,8 @@ public class DemostracionEstructuras {
             // Avanzamos la posición de fin donde se insertará el nuevo elemento
             fin = (fin + 1) % datos.length;
             if (isFull()) {
-                // Si la cola está llena, sobrescribimos la llamada más antigua.
-                // Guardamos el valor que será descartado para el log.
+                // Si la cola está llena, sobrescribimos la llamada más antigua
+                // Guardamos el valor que será descartado para el log
                 int sobrescrito = datos[frente];
                 // Avanzamos 'frente' descartando el elemento antiguo.
                 frente = (frente + 1) % datos.length;
@@ -174,6 +174,10 @@ public class DemostracionEstructuras {
             String valor = datos[frente];
             frente = (frente + 1) % datos.length;
             cantidad--;
+
+
+
+            
             return valor;
         }
 
@@ -200,7 +204,7 @@ public class DemostracionEstructuras {
     // ==========================
     public static void main(String[] args) {
 
-        System.out.println("=== PRACTICO 4 – PILAS Y COLAS ===\n");
+        System.out.println("=== PRACTICO 4 - PILAS Y COLAS ===\n");
 
         // ===== Ejercicio 1 =====
         System.out.println("1. Pila con arreglo:");
@@ -289,7 +293,7 @@ public class DemostracionEstructuras {
         System.out.print("Pila de deshacer: ");
         deshacer.mostrar();
 
-        System.out.println("Deshacer 2 acciones...");
+        System.out.println("Deshacer 2 acciones.");
         rehacer.push(deshacer.pop());
         rehacer.push(deshacer.pop());
         System.out.print("Pila deshacer: ");
@@ -297,7 +301,7 @@ public class DemostracionEstructuras {
         System.out.print("Pila rehacer: ");
         rehacer.mostrar();
 
-        System.out.println("Rehacer 1 acción...");
+        System.out.println("Rehacer 1 acción.");
         deshacer.push(rehacer.pop());
         System.out.print("Pila deshacer: ");
         deshacer.mostrar();
@@ -312,7 +316,7 @@ public class DemostracionEstructuras {
     for (int i = 1; i <= 5; i++) impresora.enqueue("Doc" + i);
     System.out.print("Cola de impresión: ");
     impresora.mostrar();
-    System.out.println("Imprimiendo 3 documentos...");
+    System.out.println("Imprimiendo 3 documentos.");
     // Simular impresión de 3 documentos (desencolar 3)
     for (int i = 0; i < 3; i++) impresora.dequeue();
     System.out.print("Cola después de imprimir: ");
