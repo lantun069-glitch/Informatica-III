@@ -86,12 +86,12 @@ public class DemostracionRojoNegro {
         System.out.println(" 3.  Insercion secuencial (1-20)");
         System.out.println(" 4.  Insercion aleatoria y analisis");
         System.out.println(" 5.  Consulta por rango");
-        System.out.println(" 6. 🧭 Navegacion (predecesor/sucesor)");
+        System.out.println(" 6.  Navegacion (predecesor/sucesor)");
         System.out.println(" 7.  Comparacion de rendimiento");
-        System.out.println(" 8.   Escenario complejo");
+        System.out.println(" 8.  Escenario complejo");
         System.out.println(" 9.  Visualizacion del arbol");
         System.out.println("10.  Test de estres (1000 elementos)");
-        System.out.println(" 0. 🚪 Salir");
+        System.out.println(" 0.  Salir");
         System.out.println("=".repeat(60));
     }
     
