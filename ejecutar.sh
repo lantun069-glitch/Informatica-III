@@ -49,17 +49,17 @@ compile_practico() {
     
     # Compilar
     if javac -d bin src/edu/informatica3/lucas_antun/$practico/*.java 2>/dev/null; then
-        echo -e "${GREEN}✅ Compilación exitosa${NC}"
+        echo -e "${GREEN} Compilación exitosa${NC}"
         return 0
     else
-        echo -e "${RED}❌ Error en la compilación${NC}"
+        echo -e "${RED} Error en la compilación${NC}"
         return 1
     fi
 }
 
 # Función para compilar todos los prácticos
 compile_all() {
-    echo -e "\n${PURPLE}🔨 COMPILANDO TODOS LOS PRÁCTICOS${NC}"
+    echo -e "\n${PURPLE}COMPILANDO TODOS LOS PRÁCTICOS${NC}"
     echo -e "${PURPLE}═══════════════════════════════════${NC}\n"
     
     mkdir -p bin
@@ -79,10 +79,10 @@ compile_all() {
     done
     
     echo -e "\n${PURPLE}═══════════════════════════════════${NC}"
-    echo -e "${CYAN}📊 Resultado: $success/$total prácticos compilados exitosamente${NC}"
+    echo -e "${CYAN}Resultado: $success/$total prácticos compilados exitosamente${NC}"
     
     if [ $success -eq $total ]; then
-        echo -e "${GREEN}🎉 ¡Todos los prácticos compilados correctamente!${NC}"
+        echo -e "${GREEN}¡Todos los prácticos compilados correctamente!${NC}"
     fi
 }
 
@@ -92,14 +92,14 @@ run_practico() {
     local class=$2
     local name=$3
     
-    echo -e "\n${BLUE}🚀 Ejecutando $name...${NC}"
+    echo -e "\n${BLUE}Ejecutando $name...${NC}"
     echo -e "${BLUE}═══════════════════════════════════════════════════${NC}\n"
     
     # Verificar si está compilado
     if [ ! -d "bin/src/edu/informatica3/lucas_antun/$practico" ]; then
-        echo -e "${YELLOW}⚠️ El práctico no está compilado. Compilando ahora...${NC}"
+        echo -e "${YELLOW}El práctico no está compilado. Compilando ahora...${NC}"
         if ! compile_practico "$practico" "$name"; then
-            echo -e "${RED}❌ No se pudo compilar el práctico${NC}"
+            echo -e "${RED}No se pudo compilar el práctico${NC}"
             return 1
         fi
     fi
@@ -110,21 +110,21 @@ run_practico() {
 
 # Función especial para ejecutar el práctico integrador
 run_practico_integrador() {
-    echo -e "\n${BLUE}🚀 Ejecutando Sistema de Gestión de Turnos Médicos...${NC}"
+    echo -e "\n${BLUE}Ejecutando Sistema de Gestión de Turnos Médicos...${NC}"
     echo -e "${BLUE}═══════════════════════════════════════════════════${NC}\n"
     
     # Verificar si está compilado
     if [ ! -d "src/edu/informatica3/lucas_antun/practico_integrador" ]; then
-        echo -e "${RED}❌ El práctico integrador no está disponible${NC}"
+        echo -e "${RED}El práctico integrador no está disponible${NC}"
         return 1
     fi
     
     # Compilar si es necesario
-    echo -e "${YELLOW}🔨 Compilando Sistema de Gestión de Turnos Médicos...${NC}"
+    echo -e "${YELLOW}Compilando Sistema de Gestión de Turnos Médicos...${NC}"
     if javac -d /tmp src/edu/informatica3/lucas_antun/practico_integrador/*.java 2>/dev/null; then
-        echo -e "${GREEN}✅ Compilación exitosa${NC}\n"
+        echo -e "${GREEN}Compilación exitosa${NC}\n"
     else
-        echo -e "${RED}❌ Error en la compilación${NC}"
+        echo -e "${RED}Error en la compilación${NC}"
         return 1
     fi
     
@@ -141,7 +141,7 @@ show_help() {
     echo -e "${BLUE}║${NC}                            ${CYAN}AYUDA${NC}                             ${BLUE}║${NC}"
     echo -e "${BLUE}╚══════════════════════════════════════════════════════════════╝${NC}"
     echo -e ""
-    echo -e "${PURPLE}📖 Descripción de los Prácticos:${NC}"
+    echo -e "${PURPLE}Descripción de los Prácticos:${NC}"
     echo -e ""
     echo -e "${YELLOW}Práctico 1 - Sistema de Gestión de Tareas${NC}"
     echo -e "  • Aplicación para gestionar tareas personales"
@@ -179,11 +179,11 @@ show_help() {
     echo -e "  • Validaciones robustas y reportes detallados"
     echo -e "  • Integra conceptos de POO, estructuras de datos y manejo de archivos"
     echo -e ""
-    echo -e "${GREEN}🔧 Requisitos:${NC}"
+    echo -e "${GREEN}Requisitos:${NC}"
     echo -e "  • Java JDK 17 o superior"
     echo -e "  • Terminal con soporte para colores (recomendado)"
     echo -e ""
-    echo -e "${GREEN}💡 Consejos:${NC}"
+    echo -e "${GREEN}Consejos:${NC}"
     echo -e "  • Use 'c' para compilar todos antes de ejecutar"
     echo -e "  • Los archivos compilados se guardan en la carpeta 'bin/'"
     echo -e "  • Presione Ctrl+C para salir de cualquier programa"
@@ -200,14 +200,14 @@ pause() {
 main() {
     # Verificar que Java esté instalado
     if ! command -v java &> /dev/null; then
-        echo -e "${RED}❌ Error: Java no está instalado o no está en el PATH${NC}"
-        echo -e "${YELLOW}💡 Por favor instale Java JDK 17 o superior${NC}"
+        echo -e "${RED}Error: Java no está instalado o no está en el PATH${NC}"
+        echo -e "${YELLOW} Por favor instale Java JDK 17 o superior${NC}"
         exit 1
     fi
     
     # Verificar versión de Java
     java_version=$(java -version 2>&1 | head -n1 | cut -d'"' -f2)
-    echo -e "${GREEN}☕ Java detectado: $java_version${NC}\n"
+    echo -e "${GREEN} Java detectado: $java_version${NC}\n"
     
     while true; do
         mostrar_menu
@@ -251,12 +251,12 @@ main() {
                 pause
                 ;;
             0|q|Q)
-                echo -e "\n${GREEN}👋 ¡Gracias por usar el sistema de prácticos!${NC}"
-                echo -e "${CYAN}📚 Desarrollado por Lucas Santiago Said Antun & Federico Fernández${NC}\n"
+                echo -e "\n${GREEN}¡Gracias por usar el sistema de prácticos!${NC}"
+                echo -e "${CYAN}Desarrollado por Lucas Santiago Said Antun & Federico Fernández${NC}\n"
                 exit 0
                 ;;
             *)
-                echo -e "\n${RED}❌ Opción inválida. Por favor seleccione una opción válida.${NC}"
+                echo -e "\n${RED} Opción inválida. Por favor seleccione una opción válida.${NC}"
                 sleep 2
                 ;;
         esac
