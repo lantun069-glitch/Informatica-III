@@ -42,7 +42,7 @@ compile_practico() {
     local practico=$1
     local name=$2
     
-    echo -e "\n${YELLOW}🔨 Compilando $name...${NC}"
+    echo -e "\n${YELLOW}Compilando $name...${NC}"
     
     # Crear directorio bin si no existe
     mkdir -p bin
