@@ -121,16 +121,16 @@ run_practico_integrador() {
     
     # Compilar si es necesario
     echo -e "${YELLOW}Compilando Sistema de Gestión de Turnos Médicos...${NC}"
-    if javac -d /tmp src/edu/informatica3/lucas_antun/practico_integrador/*.java 2>/dev/null; then
-        echo -e "${GREEN}Compilación exitosa${NC}\n"
+    if javac -d bin src/edu/informatica3/lucas_antun/practico_integrador/*.java 2>/dev/null; then
+        echo -e "${GREEN}✅ Compilación exitosa${NC}\n"
     else
-        echo -e "${RED}Error en la compilación${NC}"
+        echo -e "${RED}❌ Error en la compilación${NC}"
         return 1
     fi
     
-    # Cambiar al directorio del práctico integrador y ejecutar
-    cd src/edu/informatica3/lucas_antun/practico_integrador
-    java -cp "$(pwd)/../../../../../src" edu.informatica3.lucas_antun.practico_integrador.SistemaGestionTurnos
+    # Ejecutar desde el directorio bin
+    cd bin
+    java edu.informatica3.lucas_antun.practico_integrador.SistemaGestionTurnosMedicos
     cd - > /dev/null
 }
 
