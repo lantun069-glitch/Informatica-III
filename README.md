@@ -59,13 +59,22 @@ Informatica-III/
 │   │   ├── DemostracionRojoNegro.java
 │   │   └── NodoRojoNegro.java
 │   └── practico_integrador/ # Sistema de Gestión de Turnos Médicos
+│       ├── AgendaMedico.java
+│       ├── MapaPacientes.java
 │       ├── Medico.java
 │       ├── Paciente.java
-│       ├── SistemaGestionTurnos.java
+│       ├── PlanificadorQuirofano.java
+│       ├── PlanificadorRecordatorios.java
+│       ├── Recordatorio.java
+│       ├── SalaEspera.java
+│       ├── SistemaGestionTurnosMedicos.java
+│       ├── SolicitudCirugia.java
 │       ├── Turno.java
-│       ├── medicos.csv
-│       ├── pacientes.csv
-│       └── turnos.csv
+│       ├── data/
+│       │   ├── medicos_data.csv
+│       │   ├── pacientes_data.csv
+│       │   └── turnos_data.csv
+│       └── README.md
 ├── bin/                     # Archivos compilados (.class)
 ├── ejecutar.sh             # Script de ejecución principal
 ├── README.md               # Este archivo
@@ -199,37 +208,145 @@ Implementación profesional de árboles Rojo-Negro con verificación completa de
 5. Misma altura negra en todos los caminos
 
 ### Práctico Integrador: Sistema de Gestión de Turnos Médicos
-**Estado:** Completo
+**Estado:** ✅ Completo (10/10 ejercicios implementados)
 
-Sistema integral de gestión de turnos médicos que combina múltiples conceptos estudiados en la materia, incluyendo manejo de archivos CSV, estructuras de datos, validaciones y programación orientada a objetos.
+Sistema profesional y completo de gestión de turnos médicos que integra **todas las estructuras de datos** estudiadas en la materia: AVL Trees, Hash Tables, Min-Heaps, Colas Circulares y Pilas. Incluye 10 ejercicios independientes con funcionalidades avanzadas.
 
-**Características:**
-- Gestión de entidades: Pacientes, médicos y turnos médicos
-- Carga desde CSV: Importación automática de datos desde archivos
-- Validaciones robustas:
-  - Turnos duplicados por ID
-  - Fechas pasadas automáticamente rechazadas
-  - Verificación de existencia de pacientes y médicos
-  - Validación de duración de turnos
-- Reportes detallados: Estadísticas de carga y validación
-- Arquitectura limpia: Separación clara de responsabilidades
+#### 🎯 Ejercicios Implementados:
 
-**Clases principales:**
-- `Paciente`: Entidad básica con DNI y nombre
-- `Medico`: Entidad con matrícula, nombre y especialidad
-- `Turno`: Gestión completa de turnos con fecha/hora, duración y motivo
-- `SistemaGestionTurnos`: Clase principal con lógica de negocio
-
-**Funcionalidades de validación:**
+**1️⃣ Carga Inicial desde CSV con Validaciones**
+- Importación automática de datos desde archivos CSV
+- Validaciones robustas (duplicados, fechas pasadas, duraciones inválidas)
 - Rechazo automático de turnos con fechas pasadas
-- Detección de duplicados por ID de turno
-- Validación de referencias entre entidades
-- Control de duración de turnos (debe ser > 0)
+- Detección de IDs duplicados
+- Reportes detallados de carga
 
-**Archivos CSV incluidos:**
-- `pacientes.csv`: 7 pacientes de prueba
-- `medicos.csv`: 5 médicos con diferentes especialidades
-- `turnos.csv`: 10 turnos con casos de validación diversos
+**2️⃣ Agenda por Médico (AVL Tree)**
+- Árbol AVL auto-balanceado por fecha/hora
+- Búsqueda eficiente O(log n)
+- Detección automática de solapamientos
+- Navegación por predecesor/sucesor
+- Visualización ordenada de turnos
+
+**3️⃣ Búsqueda de Huecos Libres**
+- Algoritmo inteligente de búsqueda de slots disponibles
+- Considera duración del turno y horarios laborales
+- Sugiere próximas fechas disponibles
+- Optimización O(n) donde n = turnos existentes
+
+**4️⃣ Sala de Espera (Cola Circular)**
+- Implementación propia de cola circular con capacidad fija
+- Control de overflow (pacientes rechazados)
+- FIFO estricto para equidad
+- Simulación de atención por médico
+- Operaciones O(1) para enqueue/dequeue
+
+**5️⃣ Planificador de Recordatorios (Min-Heap)**
+- Min-Heap por fecha de recordatorio
+- Priorización automática por urgencia
+- Procesamiento eficiente de recordatorios vencidos
+- Operaciones O(log n) para insert/extractMin
+- Visualización de recordatorios pendientes
+
+**6️⃣ Índice de Pacientes (Hash Table)**
+- Implementación propia con chaining
+- Función hash personalizada
+- Rehashing automático (factor de carga > 0.75)
+- Búsqueda O(1) en promedio
+- Estadísticas de colisiones y distribución
+
+**7️⃣ Consolidación de Agendas (Merge)**
+- Algoritmo de merge O(n+m) para unir agendas
+- Detección inteligente de conflictos
+- Resolución de duplicados
+- Preserva orden temporal
+- Validación de solapamientos
+
+**8️⃣ Reportes con Algoritmos de Ordenamiento**
+- Insertion Sort (estable, O(n²))
+- Shell Sort con secuencia de Knuth
+- Quick Sort con pivote aleatorizado
+- Comparación de rendimiento
+- Múltiples criterios de ordenamiento
+
+**9️⃣ Auditoría y Undo/Redo (Pilas)** ⭐ **NUEVO**
+- Sistema interactivo con menú completo
+- Operaciones: Agregar, Cancelar, Reprogramar turnos
+- Dos pilas LIFO (Undo/Redo)
+- Deshacer/Rehacer multi-nivel
+- Redo bloqueado después de nueva acción
+- Invariantes preservados (sin solapamientos)
+- Historial completo de operaciones
+- Complejidad: O(1) para push/pop
+
+**🔟 Planificador de Quirófano (Heaps + Top-K)**
+- Min-Heap para solicitudes de cirugía
+- Asignación eficiente a quirófanos disponibles
+- Algoritmo Top-K para médicos más ocupados
+- Optimización de recursos quirúrgicos
+- Estadísticas de utilización
+
+#### 📦 Estructuras de Datos Implementadas:
+
+**AgendaMedico (AVL Tree)**
+- Árbol AVL auto-balanceado con clave compuesta (fecha/hora + ID)
+- Rotaciones completas (LL, RR, LR, RL)
+- Factor de balance automático
+- Búsqueda de predecesor/sucesor O(log n)
+- Consultas por rango de fechas
+
+**MapaPacientes (Hash Table)**
+- Tabla hash con chaining (listas enlazadas)
+- Función hash: `(dni.hashCode() & 0x7FFFFFFF) % M`
+- Rehashing dinámico al superar factor de carga 0.75
+- Operaciones O(1) en promedio
+- Estadísticas de colisiones
+
+**SalaEspera (Cola Circular)**
+- Array circular con capacidad fija
+- Indicadores `front` y `rear`
+- Control de overflow y underflow
+- Operaciones O(1) constante
+- FIFO estricto
+
+**PlanificadorRecordatorios (Min-Heap)**
+- Heap binario mínimo por fecha
+- Percolate-up y percolate-down
+- Operaciones O(log n) para insert/extract
+- Array dinámico con redimensionamiento
+
+**PlanificadorQuirofano (Min-Heap + Max-Heap)**
+- Min-Heap para solicitudes urgentes
+- Max-Heap para ranking de médicos
+- Asignación óptima de recursos
+- Top-K con heap de tamaño K
+
+**Sistema Undo/Redo (Pilas)** ⭐
+- Stack<OperacionHistorial> para historial
+- Clase interna con enum TipoOperacion
+- Soporte para AGREGAR, CANCELAR, REPROGRAMAR
+- Manejo de fechas anteriores para reprogramaciones
+
+#### 🔧 Clases Principales:
+
+- `SistemaGestionTurnosMedicos`: Sistema principal con menú de 10 opciones
+- `AgendaMedico`: AVL Tree para gestión de turnos por médico
+- `MapaPacientes`: Hash Table propia para índice de pacientes
+- `SalaEspera`: Cola circular para gestión de sala de espera
+- `PlanificadorRecordatorios`: Min-Heap para recordatorios
+- `PlanificadorQuirofano`: Heaps para planificación quirúrgica
+- `Turno`: Entidad con fecha/hora, duración, solapamiento
+- `Paciente`: Entidad con DNI, nombre y datos de contacto
+- `Medico`: Entidad con matrícula, especialidad y agenda
+- `Recordatorio`: Entidad para sistema de notificaciones
+- `SolicitudCirugia`: Entidad para planificación quirúrgica
+- `OperacionHistorial`: Clase interna para Undo/Redo
+
+#### 📊 Archivos de Datos:
+
+- `data/pacientes_data.csv`: 30 pacientes de prueba
+- `data/medicos_data.csv`: 5 médicos con especialidades variadas
+- `data/turnos_data.csv`: 123 turnos con validaciones diversas
 
 ## Tecnologías y Herramientas
 
@@ -302,19 +419,19 @@ java -cp bin src.edu.informatica3.lucas_antun.practico05.DemostracionAVL
 java -cp bin src.edu.informatica3.lucas_antun.practico06.DemostracionRojoNegro
 
 # Práctico Integrador: Sistema de Gestión de Turnos Médicos
-cd src/edu/informatica3/lucas_antun/practico_integrador
-java -cp "/home/lucas/Desktop/Informatica-III/src" edu.informatica3.lucas_antun.practico_integrador.SistemaGestionTurnos
+java -cp bin edu.informatica3.lucas_antun.practico_integrador.SistemaGestionTurnosMedicos
 ```
 
 ## Métricas del Proyecto
 
-- **Líneas de código:** 7,900+ líneas
-- **Clases implementadas:** 24 archivos Java
-- **Métodos documentados:** 170+
-- **Casos de prueba:** 80+ ejercicios educativos
-- **Algoritmos analizados:** 25+
-- **Estructuras de datos:** 6 implementaciones completas
+- **Líneas de código:** 11,000+ líneas
+- **Clases implementadas:** 35 archivos Java
+- **Métodos documentados:** 250+
+- **Casos de prueba:** 90+ ejercicios educativos
+- **Algoritmos analizados:** 30+
+- **Estructuras de datos:** 10 implementaciones completas
 - **Prácticos completados:** 7/7 (100%)
+- **Ejercicios integrador:** 10/10 (100%)
 
 ## Objetivos Académicos Cumplidos
 
@@ -351,7 +468,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 **Federico Fernández**
 - Estudiante de Informática III
 - Instituto Universitario Aeronáutico
-- ffernandez576@alumnos.iua.edu.ar
+- Colaborador del proyecto
 
 ---
 
