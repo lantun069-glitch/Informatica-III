@@ -1,6 +1,6 @@
 # Práctico Integrador - Sistema de Gestión de Turnos Médicos
 
-**Alumno:** Lucas Antún  
+**Alumno:** Lucas Antún  y Federico Fernandez
 **Materia:** Informática III  
 **Universidad Nacional de Tucumán**
 
