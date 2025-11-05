@@ -6,7 +6,7 @@
 
 ---
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 practico_integrador/
@@ -22,7 +22,7 @@ practico_integrador/
 
 ---
 
-## 🚀 Ejecución
+##  Ejecución
 
 Desde el directorio raíz del proyecto:
 
@@ -53,47 +53,47 @@ Desde el directorio raíz del proyecto:
 
 ---
 
-## ✅ Ejercicios Implementados
+##  Ejercicios Implementados
 
 | # | Ejercicio | Estado | Complejidad |
 |---|-----------|--------|-------------|
-| 1 | Carga CSV con validaciones | ✅ Completo | O(n) |
-| 2 | Agenda médica (AVL Tree) | ✅ Completo | O(log n) |
-| 3 | Buscar hueco libre | ✅ Completo | O(log n + k) |
-| 4 | Sala de espera (Cola Circular) | ✅ Completo | O(1) |
-| 5 | Recordatorios (Min-Heap) | ✅ Completo | O(log n) |
-| 6 | Índice de pacientes (Hash Table) | ✅ Completo | O(1) promedio |
-| 7 | Consolidador de agendas | ⚠️ Placeholder | Documentado |
-| 8 | Reportes de ordenamiento | ⚠️ Placeholder | Documentado |
-| 9 | Auditoría Undo/Redo | ⚠️ Placeholder | Documentado |
-| 10 | Planificador de quirófano | ✅ Completo | O(S log Q + M log M) |
+| 1 | Carga CSV con validaciones |  Completo | O(n) |
+| 2 | Agenda médica (AVL Tree) |  Completo | O(log n) |
+| 3 | Buscar hueco libre |  Completo | O(log n + k) |
+| 4 | Sala de espera (Cola Circular) |  Completo | O(1) |
+| 5 | Recordatorios (Min-Heap) |  Completo | O(log n) |
+| 6 | Índice de pacientes (Hash Table) |  Completo | O(1) promedio |
+| 7 | Consolidador de agendas |  Placeholder | Documentado |
+| 8 | Reportes de ordenamiento |  Placeholder | Documentado |
+| 9 | Auditoría Undo/Redo |  Placeholder | Documentado |
+| 10 | Planificador de quirófano |  Completo | O(S log Q + M log M) |
 
 ---
 
-## 🎯 Características Principales
+##  Características Principales
 
-✅ **Estructuras de datos personalizadas** (implementadas desde cero)
+ **Estructuras de datos personalizadas** (implementadas desde cero)
 - AVL Tree con rotaciones y balance automático
 - Min-Heap con operación de reprogramación
 - Hash Table con chaining y rehashing dinámico
 - Cola Circular con gestión de desborde
 
-✅ **Validaciones exhaustivas**
+ **Validaciones exhaustivas**
 - DNI de 8 dígitos
 - Nombres no vacíos
 - Fechas válidas (rechaza pasado)
 - Detección de solapamiento de turnos
 
-✅ **Documentación completa en español**
+ **Documentación completa en español**
 - Todos los comentarios en español
 - Javadoc en todas las clases
 - Explicación de decisiones de diseño
 
-✅ **Menu interactivo con 10 opciones**
+ **Menu interactivo con 10 opciones**
 
 ---
 
-## 📊 Datos de Prueba
+##  Datos de Prueba
 
 - **30 pacientes** con DNI válidos
 - **5 médicos** de diferentes especialidades
@@ -102,7 +102,7 @@ Desde el directorio raíz del proyecto:
 
 ---
 
-## 📖 Documentación Adicional
+##  Documentación Adicional
 
 Para más detalles técnicos, ver:
 - `docs/VERIFICACION_COMPLETA.md` - Tests y verificación completa del sistema
