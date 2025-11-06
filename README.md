@@ -1,8 +1,7 @@
 # Informática III - Trabajos Prácticos
 
-[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://www.oracle.com/java/)
+[![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-green.svg)]()
 
 **Universidad:** Instituto Universitario Aeronáutico  
 **Materia:** Informática III  
@@ -11,19 +10,12 @@
 
 ## Descripción
 
-Este repositorio contiene la implementación completa y profesionalizada de todos los trabajos prácticos de la materia Informática III. El proyecto ha sido completamente refactorizado, documentado y organizado siguiendo las mejores prácticas de desarrollo de software.
+Implementación completa de los trabajos prácticos de Informática III, incluyendo estructuras de datos, algoritmos de ordenamiento, árboles balanceados y un sistema integrador de gestión de turnos médicos.
 
 ## Ejecución Rápida
 
 ```bash
-# Clonar el repositorio
-git clone <repository-url>
-cd Informatica-III
-
-# Dar permisos de ejecución
-chmod +x ejecutar.sh
-
-# Ejecutar el sistema
+# Ejecutar el menú interactivo
 ./ejecutar.sh
 ```
 
@@ -32,72 +24,107 @@ chmod +x ejecutar.sh
 ```
 Informatica-III/
 ├── src/edu/informatica3/lucas_antun/
-│   ├── practico01/          # Sistema de Gestión de Tareas (POO)
-│   │   ├── GestorTareas.java
-│   │   ├── MainTareas.java
-│   │   └── Tarea.java
-│   ├── practico02/          # Ejercicios de Recursividad
-│   │   └── EjerciciosRecursividad.java
-│   ├── practico03/          # Sistema de Pizzería (Algoritmos)
-│   │   ├── AlgoritmosOrdenamiento.java
-│   │   ├── MainPizzeria.java
-│   │   ├── MedidorTiempos.java
-│   │   ├── Pedido.java
-│   │   └── SistemaPizzeria.java
-│   ├── practico04/          # Estructuras de Datos (Pilas y Colas)
-│   │   ├── DemostracionEstructuras.java
-│   │   └── PilaArreglo.java
-│   ├── practico05/          # Árboles AVL (Auto-balanceados)
-│   │   ├── ArbolAVL.java
-│   │   ├── DemostracionAVL.java
-│   │   ├── NodoAVL.java
-│   │   └── ResultadoVerificacionAVL.java
-│   ├── practico06/          # Árboles Rojo-Negro (Red-Black Trees)
-│   │   ├── ArbolRojoNegro.java
-│   │   ├── CasoRebalanceo.java
-│   │   ├── Color.java
-│   │   ├── DemostracionRojoNegro.java
-│   │   └── NodoRojoNegro.java
-│   └── practico_integrador/ # Sistema de Gestión de Turnos Médicos
-│       ├── AgendaMedico.java
-│       ├── MapaPacientes.java
-│       ├── Medico.java
-│       ├── Paciente.java
-│       ├── PlanificadorQuirofano.java
-│       ├── PlanificadorRecordatorios.java
-│       ├── Recordatorio.java
-│       ├── SalaEspera.java
-│       ├── SistemaGestionTurnosMedicos.java
-│       ├── SolicitudCirugia.java
-│       ├── Turno.java
-│       ├── data/
-│       │   ├── medicos_data.csv
-│       │   ├── pacientes_data.csv
-│       │   └── turnos_data.csv
-│       └── README.md
-├── bin/                     # Archivos compilados (.class)
-├── ejecutar.sh             # Script de ejecución principal
-├── README.md               # Este archivo
-└── LICENSE                 # Licencia MIT
+│   ├── practico01/              # Sistema de Gestión de Tareas
+│   │   ├── main/
+│   │   ├── modelo/
+│   │   └── gestor/
+│   ├── practico02/              # Ejercicios de Recursividad
+│   ├── practico03/              # Sistema de Pizzería (Algoritmos)
+│   │   ├── main/
+│   │   ├── modelo/
+│   │   └── algoritmos/
+│   ├── practico04/              # Pilas y Colas
+│   │   ├── main/
+│   │   └── estructuras/
+│   ├── practico05/              # Árboles AVL
+│   │   ├── main/
+│   │   ├── estructuras/
+│   │   ├── nodos/
+│   │   └── utils/
+│   ├── practico06/              # Árboles Rojo-Negro
+│   │   ├── main/
+│   │   ├── estructuras/
+│   │   ├── nodos/
+│   │   └── enums/
+│   └── practico_integrador/     # Sistema de Gestión de Turnos Médicos
+│       ├── main/
+│       ├── modelo/
+│       ├── estructuras/
+│       ├── nodos/
+│       ├── enums/
+│       ├── utils/
+│       └── data/                # Archivos CSV de datos
+├── bin/                         # Archivos compilados
+├── ejecutar.sh                  # Script de ejecución
+└── README.md
 ```
 
 ## Prácticos Implementados
 
-### Práctico 1: Sistema de Gestión de Tareas (POO)
-**Estado:** Completo
-
-Implementación de un sistema completo de gestión de tareas usando Programación Orientada a Objetos.
-
-**Características:**
-- Gestión completa de tareas (CRUD)
+### 1. Sistema de Gestión de Tareas (POO)
+- CRUD completo de tareas
 - Persistencia en archivos
-- Búsqueda y filtrado avanzado
-- Estadísticas y reportes
-- Interfaz de usuario intuitiva
+- Búsqueda y filtrado
 
-**Clases principales:**
-- `Tarea`: Entidad principal con validaciones robustas
-- `GestorTareas`: Lógica de negocio y persistencia
+### 2. Ejercicios de Recursividad
+- 8 ejercicios: factorial, fibonacci, palíndromos, torres de Hanoi, etc.
+- Análisis de complejidad temporal
+
+### 3. Sistema de Pizzería (Algoritmos de Ordenamiento)
+- Insertion Sort, Shell Sort, Quick Sort
+- Medición y comparación de rendimiento
+- Verificadores de ordenamiento
+
+### 4. Estructuras de Datos (Pilas y Colas)
+- Implementación con arreglos
+- Cola circular
+- 8 ejercicios prácticos
+
+### 5. Árboles AVL (Auto-balanceados)
+- Árbol binario auto-balanceado
+- Rotaciones simples y dobles
+- Verificación de propiedades AVL
+
+### 6. Árboles Rojo-Negro (Red-Black Trees)
+- Implementación completa
+- Rebalanceo con casos
+- Visualización de rotaciones
+
+### 7. Práctico Integrador: Sistema de Gestión de Turnos Médicos
+Sistema completo que integra todas las estructuras de datos:
+
+1. **Carga de datos desde CSV** (medicos, pacientes, turnos)
+2. **Agenda por médico** con AVL Tree
+3. **Búsqueda de huecos libres** en agenda
+4. **Sala de espera** con cola circular
+5. **Recordatorios** con planificador de prioridad
+6. **Índice de pacientes** con Hash Table
+7. **Consolidación de agendas** (merge)
+8. **Reportes** con algoritmos de ordenamiento
+9. **Auditoría** con Undo/Redo (Pilas)
+10. **Planificador de quirófano** con heaps (Min y Max)
+
+## Compilación y Ejecución
+
+### Opción 1: Script automatizado (recomendado)
+```bash
+./ejecutar.sh
+```
+
+El script ofrece un menú interactivo con opciones para:
+- Ejecutar cada práctico individualmente
+- Compilar todos los prácticos
+- Ver ayuda y descripción de cada ejercicio
+
+### Opción 2: Compilación manual
+```bash
+# Compilar todo
+javac -d bin -encoding UTF-8 src/edu/informatica3/lucas_antun/**/*.java
+
+# Ejecutar un práctico específico
+java -cp bin edu.informatica3.lucas_antun.practico01.main.MainTareas
+java -cp bin edu.informatica3.lucas_antun.practico_integrador.main.SistemaGestionTurnosMedicos
+```
 - `MainTareas`: Interfaz de usuario interactiva
 
 ### Práctico 2: Ejercicios de Recursividad
@@ -208,11 +235,11 @@ Implementación profesional de árboles Rojo-Negro con verificación completa de
 5. Misma altura negra en todos los caminos
 
 ### Práctico Integrador: Sistema de Gestión de Turnos Médicos
-**Estado:** ✅ Completo (10/10 ejercicios implementados)
+**Estado:**  Completo (10/10 ejercicios implementados)
 
 Sistema profesional y completo de gestión de turnos médicos que integra **todas las estructuras de datos** estudiadas en la materia: AVL Trees, Hash Tables, Min-Heaps, Colas Circulares y Pilas. Incluye 10 ejercicios independientes con funcionalidades avanzadas.
 
-#### 🎯 Ejercicios Implementados:
+#### Ejercicios Implementados:
 
 **1️⃣ Carga Inicial desde CSV con Validaciones**
 - Importación automática de datos desde archivos CSV
@@ -269,7 +296,7 @@ Sistema profesional y completo de gestión de turnos médicos que integra **toda
 - Comparación de rendimiento
 - Múltiples criterios de ordenamiento
 
-**9️⃣ Auditoría y Undo/Redo (Pilas)** ⭐ **NUEVO**
+**9️⃣ Auditoría y Undo/Redo (Pilas)** 
 - Sistema interactivo con menú completo
 - Operaciones: Agregar, Cancelar, Reprogramar turnos
 - Dos pilas LIFO (Undo/Redo)
@@ -286,7 +313,7 @@ Sistema profesional y completo de gestión de turnos médicos que integra **toda
 - Optimización de recursos quirúrgicos
 - Estadísticas de utilización
 
-#### 📦 Estructuras de Datos Implementadas:
+#### Estructuras de Datos Implementadas:
 
 **AgendaMedico (AVL Tree)**
 - Árbol AVL auto-balanceado con clave compuesta (fecha/hora + ID)
@@ -321,48 +348,24 @@ Sistema profesional y completo de gestión de turnos médicos que integra **toda
 - Asignación óptima de recursos
 - Top-K con heap de tamaño K
 
-**Sistema Undo/Redo (Pilas)** ⭐
+**Sistema Undo/Redo (Pilas)** 
 - Stack<OperacionHistorial> para historial
 - Clase interna con enum TipoOperacion
 - Soporte para AGREGAR, CANCELAR, REPROGRAMAR
 - Manejo de fechas anteriores para reprogramaciones
 
-#### 🔧 Clases Principales:
-
-- `SistemaGestionTurnosMedicos`: Sistema principal con menú de 10 opciones
-- `AgendaMedico`: AVL Tree para gestión de turnos por médico
-- `MapaPacientes`: Hash Table propia para índice de pacientes
-- `SalaEspera`: Cola circular para gestión de sala de espera
-- `PlanificadorRecordatorios`: Min-Heap para recordatorios
-- `PlanificadorQuirofano`: Heaps para planificación quirúrgica
-- `Turno`: Entidad con fecha/hora, duración, solapamiento
-- `Paciente`: Entidad con DNI, nombre y datos de contacto
-- `Medico`: Entidad con matrícula, especialidad y agenda
-- `Recordatorio`: Entidad para sistema de notificaciones
-- `SolicitudCirugia`: Entidad para planificación quirúrgica
-- `OperacionHistorial`: Clase interna para Undo/Redo
-
-#### 📊 Archivos de Datos:
+#### Archivos de Datos:
 
 - `data/pacientes_data.csv`: 30 pacientes de prueba
 - `data/medicos_data.csv`: 5 médicos con especialidades variadas
 - `data/turnos_data.csv`: 123 turnos con validaciones diversas
 
-## Tecnologías y Herramientas
-
-- **Lenguaje:** Java 17+ (compatible con versiones superiores)
-- **Paradigma:** Programación Orientada a Objetos
-- **Documentación:** JavaDoc estándar
-- **Build System:** Compilación manual con scripts automatizados
-- **Testing:** Casos de prueba integrados y demostraciones
-
 ## Características del Proyecto
 
 ### Arquitectura
-- **Organización por paquetes:** Estructura Maven estándar
+- **Organización por paquetes:** Estructura estándar
 - **Separación de responsabilidades:** Una clase, una responsabilidad
 - **Principios SOLID:** Aplicados consistentemente
-- **Patrones de diseño:** Factory, Strategy, Template Method
 
 ### Documentación
 - **JavaDoc completo:** Todas las clases y métodos documentados
@@ -398,84 +401,50 @@ javac -d bin -cp bin src/edu/informatica3/lucas_antun/*/*.java
 java -cp bin src.edu.informatica3.lucas_antun.practico01.MainTareas
 ```
 
-### Ejecución Individual
-```bash
-# Práctico 1: Sistema de Tareas
-java -cp bin src.edu.informatica3.lucas_antun.practico01.MainTareas
+## Requisitos
 
-# Práctico 2: Recursividad
-java -cp bin src.edu.informatica3.lucas_antun.practico02.EjerciciosRecursividad
+- Java JDK 17 o superior
+- Sistema operativo: Linux, macOS o Windows
+- Terminal con soporte para scripts bash (en Windows usar Git Bash o WSL)
 
-# Práctico 3: Sistema de Pizzería
-java -cp bin src.edu.informatica3.lucas_antun.practico03.MainPizzeria
+## Características Técnicas
 
-# Práctico 4: Estructuras de Datos
-java -cp bin src.edu.informatica3.lucas_antun.practico04.DemostracionEstructuras
+- **Sin clases internas**: Todo el código usa clases independientes
+- **Organización modular**: Cada práctico organizado por responsabilidades (main, modelo, estructuras, etc.)
+- **Documentación Javadoc**: Todas las clases principales documentadas
+- **Validaciones robustas**: Manejo de errores y casos edge
+- **Código limpio**: Siguiendo convenciones de Java
 
-# Práctico 5: Árboles AVL
-java -cp bin src.edu.informatica3.lucas_antun.practico05.DemostracionAVL
+## Tecnologías y Conceptos
 
-# Práctico 6: Árboles Rojo-Negro
-java -cp bin src.edu.informatica3.lucas_antun.practico06.DemostracionRojoNegro
-
-# Práctico Integrador: Sistema de Gestión de Turnos Médicos
-java -cp bin edu.informatica3.lucas_antun.practico_integrador.SistemaGestionTurnosMedicos
-```
-
-## Métricas del Proyecto
-
-- **Líneas de código:** 11,000+ líneas
-- **Clases implementadas:** 35 archivos Java
-- **Métodos documentados:** 250+
-- **Casos de prueba:** 90+ ejercicios educativos
-- **Algoritmos analizados:** 30+
-- **Estructuras de datos:** 10 implementaciones completas
-- **Prácticos completados:** 7/7 (100%)
-- **Ejercicios integrador:** 10/10 (100%)
-
-## Objetivos Académicos Cumplidos
-
-### Conceptos de Programación
-- **Programación Orientada a Objetos**
-- **Estructuras de Datos Fundamentales**
-- **Algoritmos de Ordenamiento**
-- **Recursividad y Análisis de Complejidad**
-- **Árboles Auto-balanceados (AVL y Red-Black)**
-- **Manejo de Archivos y Persistencia**
-
-### Competencias Profesionales
-- **Documentación Técnica Profesional**
-- **Manejo de Errores y Validaciones**
-- **Organización y Estructura de Proyectos**
-- **Testing y Validación de Software**
-- **Interfaces de Usuario Intuitivas**
-
-## Contribuciones
-
-Este es un proyecto académico personal. Sin embargo, sugerencias y mejoras son bienvenidas a través de issues.
+- Programación Orientada a Objetos
+- Estructuras de Datos (Pilas, Colas, Listas, Árboles)
+- Algoritmos de Ordenamiento (O(n²), O(n log n))
+- Árboles Balanceados (AVL, Red-Black)
+- Hash Tables con encadenamiento
+- Heaps (Min-Heap, Max-Heap)
+- Recursividad
+- Análisis de complejidad temporal
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
 ## Autores
 
-**Lucas Santiago Said Antun**
-- Estudiante de Informática III
-- Instituto Universitario Aeronáutico
-- lantun069@alumnos.iua.edu.ar
+**Lucas Santiago Said Antun**  
+📧 lantun069@alumnos.iua.edu.ar  
+🎓 Instituto Universitario Aeronáutico
 
-**Federico Fernández**
-- Estudiante de Informática III
-- Instituto Universitario Aeronáutico
-- Colaborador del proyecto
+**Federico Fernández**  
+📧 ffernandez576@alumnos.iua.edu.ar  
+🎓 Instituto Universitario Aeronáutico
 
 ---
 
 <div align="center">
 
-Si este proyecto te resulta útil, no olvides darle una estrella
-
-Desarrollado para la comunidad académica
+**Informática III - 2025**  
+*Instituto Universitario Aeronáutico*
 
 </div>

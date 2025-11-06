@@ -47,14 +47,103 @@ compile_practico() {
     # Crear directorio bin si no existe
     mkdir -p bin
     
-    # Compilar
-    if javac -d bin src/edu/informatica3/lucas_antun/$practico/*.java 2>/dev/null; then
-        echo -e "${GREEN} Compilación exitosa${NC}"
-        return 0
-    else
-        echo -e "${RED} Error en la compilación${NC}"
-        return 1
-    fi
+    # Compilar según la estructura de cada práctico
+    case "$practico" in
+        "practico01")
+            if javac -d bin -encoding UTF-8 \
+                src/edu/informatica3/lucas_antun/$practico/modelo/*.java \
+                src/edu/informatica3/lucas_antun/$practico/gestor/*.java \
+                src/edu/informatica3/lucas_antun/$practico/main/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+        "practico02")
+            if javac -d bin src/edu/informatica3/lucas_antun/$practico/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+        "practico03")
+            if javac -d bin -encoding UTF-8 \
+                src/edu/informatica3/lucas_antun/$practico/modelo/*.java \
+                src/edu/informatica3/lucas_antun/$practico/algoritmos/*.java \
+                src/edu/informatica3/lucas_antun/$practico/main/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+        "practico04")
+            if javac -d bin -encoding UTF-8 \
+                src/edu/informatica3/lucas_antun/$practico/estructuras/*.java \
+                src/edu/informatica3/lucas_antun/$practico/main/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+        "practico05")
+            if javac -d bin -encoding UTF-8 \
+                src/edu/informatica3/lucas_antun/$practico/nodos/*.java \
+                src/edu/informatica3/lucas_antun/$practico/utils/*.java \
+                src/edu/informatica3/lucas_antun/$practico/estructuras/*.java \
+                src/edu/informatica3/lucas_antun/$practico/main/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+        "practico06")
+            if javac -d bin -encoding UTF-8 \
+                src/edu/informatica3/lucas_antun/$practico/enums/*.java \
+                src/edu/informatica3/lucas_antun/$practico/nodos/*.java \
+                src/edu/informatica3/lucas_antun/$practico/estructuras/*.java \
+                src/edu/informatica3/lucas_antun/$practico/main/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+        "practico_integrador")
+            if javac -d bin -encoding UTF-8 \
+                src/edu/informatica3/lucas_antun/$practico/utils/*.java \
+                src/edu/informatica3/lucas_antun/$practico/modelo/*.java \
+                src/edu/informatica3/lucas_antun/$practico/nodos/*.java \
+                src/edu/informatica3/lucas_antun/$practico/enums/*.java \
+                src/edu/informatica3/lucas_antun/$practico/estructuras/*.java \
+                src/edu/informatica3/lucas_antun/$practico/main/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+        *)
+            if javac -d bin src/edu/informatica3/lucas_antun/$practico/*.java 2>/dev/null; then
+                echo -e "${GREEN}✅ Compilación exitosa${NC}"
+                return 0
+            else
+                echo -e "${RED}❌ Error en la compilación${NC}"
+                return 1
+            fi
+            ;;
+    esac
 }
 
 # Función para compilar todos los prácticos
@@ -95,17 +184,24 @@ run_practico() {
     echo -e "\n${BLUE}Ejecutando $name...${NC}"
     echo -e "${BLUE}═══════════════════════════════════════════════════${NC}\n"
     
-    # Verificar si está compilado
-    if [ ! -d "bin/src/edu/informatica3/lucas_antun/$practico" ]; then
-        echo -e "${YELLOW}El práctico no está compilado. Compilando ahora...${NC}"
-        if ! compile_practico "$practico" "$name"; then
-            echo -e "${RED}No se pudo compilar el práctico${NC}"
-            return 1
-        fi
+    # Compilar el práctico primero
+    if ! compile_practico "$practico" "$name"; then
+        echo -e "${RED}No se pudo compilar el práctico${NC}"
+        return 1
     fi
     
-    # Ejecutar
-    java -cp bin edu.informatica3.lucas_antun.$practico.$class
+    # Ejecutar según el práctico
+    case "$practico" in
+        "practico01"|"practico03"|"practico04"|"practico05"|"practico06")
+            java -cp bin edu.informatica3.lucas_antun.$practico.main.$class
+            ;;
+        "practico02")
+            java -cp bin edu.informatica3.lucas_antun.$practico.$class
+            ;;
+        *)
+            java -cp bin edu.informatica3.lucas_antun.$practico.$class
+            ;;
+    esac
 }
 
 # Función especial para ejecutar el práctico integrador
@@ -119,18 +215,32 @@ run_practico_integrador() {
         return 1
     fi
     
-    # Compilar si es necesario
+    # Compilar si es necesario (incluyendo todas las subcarpetas)
     echo -e "${YELLOW}Compilando Sistema de Gestión de Turnos Médicos...${NC}"
-    if javac -d bin src/edu/informatica3/lucas_antun/practico_integrador/*.java 2>/dev/null; then
+    if javac -d bin -encoding UTF-8 \
+        src/edu/informatica3/lucas_antun/practico_integrador/utils/*.java \
+        src/edu/informatica3/lucas_antun/practico_integrador/modelo/*.java \
+        src/edu/informatica3/lucas_antun/practico_integrador/nodos/*.java \
+        src/edu/informatica3/lucas_antun/practico_integrador/enums/*.java \
+        src/edu/informatica3/lucas_antun/practico_integrador/estructuras/*.java \
+        src/edu/informatica3/lucas_antun/practico_integrador/main/*.java 2>/dev/null; then
         echo -e "${GREEN}✅ Compilación exitosa${NC}\n"
     else
         echo -e "${RED}❌ Error en la compilación${NC}"
+        echo -e "${YELLOW}Intentando compilar con errores visibles...${NC}"
+        javac -d bin -encoding UTF-8 \
+            src/edu/informatica3/lucas_antun/practico_integrador/utils/*.java \
+            src/edu/informatica3/lucas_antun/practico_integrador/modelo/*.java \
+            src/edu/informatica3/lucas_antun/practico_integrador/nodos/*.java \
+            src/edu/informatica3/lucas_antun/practico_integrador/enums/*.java \
+            src/edu/informatica3/lucas_antun/practico_integrador/estructuras/*.java \
+            src/edu/informatica3/lucas_antun/practico_integrador/main/*.java
         return 1
     fi
     
     # Ejecutar desde el directorio bin
     cd bin
-    java edu.informatica3.lucas_antun.practico_integrador.SistemaGestionTurnosMedicos
+    java edu.informatica3.lucas_antun.practico_integrador.main.SistemaGestionTurnosMedicos
     cd - > /dev/null
 }
 
